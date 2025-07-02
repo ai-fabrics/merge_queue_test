@@ -1,0 +1,7 @@
+queue_rules:
+  - name: queue_rule_merge_queue_test_repo
+    batch_size: 5
+    merge_method: merge
+    batch_max_failure_resolution_attempts: 10
+    checks_timeout: 24 h
+    update_method: merge
