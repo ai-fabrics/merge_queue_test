@@ -39,7 +39,7 @@ pipeline {
                 script {
                     sh """
                     echo "Run (sleep) time for stage 2"
-                    sleep 100
+                    sleep 100 
                     exit 1
                     """
                 }
