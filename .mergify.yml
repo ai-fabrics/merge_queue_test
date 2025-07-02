@@ -5,3 +5,12 @@ queue_rules:
     batch_max_failure_resolution_attempts: 10
     checks_timeout: 24 h
     update_method: merge
+pull_request_rules:
+  - name: automatic merge on CI success
+    conditions:
+      - "status-success=ci/build"
+      - "label=automerge"
+      - "base=main"
+    actions:
+      merge:
+        method: merge
