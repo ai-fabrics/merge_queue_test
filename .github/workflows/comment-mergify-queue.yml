@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  pull_requests: write  # Needed to comment on pull requests
   issues: write  # Needed to comment on pull requests (PRs are issues)
 
 jobs:
@@ -15,9 +16,9 @@ jobs:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Skip forks unless same repo
+      - name: Post comment to PR
         if: github.event.pull_request.head.repo.full_name == github.repository
         run: |
           gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments -f body='@mergifyio queue'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_FG_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
