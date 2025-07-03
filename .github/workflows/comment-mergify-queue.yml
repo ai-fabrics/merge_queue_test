@@ -19,6 +19,5 @@ jobs:
         if: github.event.pull_request.head.repo.full_name == github.repository
         run: |
           gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments -f body='@mergifyio queue'
-
-env:
-  GH_TOKEN: ${{ secrets.GITHUB_FG_PAT }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_FG_PAT }}
