@@ -7,7 +7,7 @@ on:
     types: [opened]
 
 permissions:
-  contents: write
+  contents: read
   issues: write  # Needed to comment on pull requests (PRs are issues)
 
 jobs:
@@ -18,10 +18,7 @@ jobs:
       - name: Skip forks unless same repo
         if: github.event.pull_request.head.repo.full_name == github.repository
         run: |
-          curl -L \
-            -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
-            -d '{"body":"@mergifyio queue"}'
+          gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+            -f body='@mergifyio queue'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
