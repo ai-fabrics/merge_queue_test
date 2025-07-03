@@ -18,8 +18,7 @@ jobs:
       - name: Skip forks unless same repo
         if: github.event.pull_request.head.repo.full_name == github.repository
         run: |
-          gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
-            -f body='@mergifyio queue'
+          gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments -f body='@mergifyio queue'
 
 env:
-  GH_TOKEN: ${{ secrets.REPO_SECRET}}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
