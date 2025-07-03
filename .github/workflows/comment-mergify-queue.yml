@@ -10,10 +10,11 @@ permissions:
 
 jobs:
   auto-queue:
-    if: github.event.pull_request.head.repo.full_name == github.repository  # ✅ Skip forks
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Post @mergifyio queue comment
+      - name: Skip forks unless same repo
+        if: github.event.pull_request.head.repo.full_name == github.repository
         run: |
           curl -s -X POST \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
