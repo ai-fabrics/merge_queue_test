@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   queue-mergify:
+    if: github.event.pull_request.head.repo.full_name == github.repository  # skip forks
     runs-on: ubuntu-latest
     steps:
       - name: Comment on PR to trigger Mergify queue
