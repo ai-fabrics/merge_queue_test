@@ -19,7 +19,7 @@ pipeline {
                     sh """
                     RUN_TIME=`expr \$RANDOM % 60`
                     echo "Run (sleep) time for dummy build: "
-                    sleep 300
+                    sleep \$RUN_TIME
                     """
                 }
             }
@@ -29,18 +29,7 @@ pipeline {
                 script {
                     sh """
                     echo "Run (sleep) time for stage 1"
-                    sleep 100 
-                    """
-                }
-            }
-        }
-        stage('stage 2') {
-            steps {
-                script {
-                    sh """
-                    echo "Run (sleep) time for stage 2"
-                    sleep 100 
-                    exit 1
+                    sleep 10 
                     """
                 }
             }
