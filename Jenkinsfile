@@ -29,7 +29,7 @@ pipeline {
                 script {
                     sh """
                     echo "Run (sleep) time for stage 1"
-                    sleep 200 
+                    sleep 10 
                     """
                 }
             }
