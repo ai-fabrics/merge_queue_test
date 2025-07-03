@@ -2,10 +2,12 @@ name: Auto Queue Mergify on PR Open
 
 on:
   pull_request:
+    branches:
+      - main
     types: [opened]
 
 permissions:
-  contents: read
+  contents: write
   issues: write  # Needed to comment on pull requests (PRs are issues)
 
 jobs:
