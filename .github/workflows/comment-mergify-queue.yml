@@ -21,4 +21,4 @@ jobs:
           gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
             -f body='@mergifyio queue'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_FG_PAT }}
+          GITHUB_TOKEN: ${{ secrets.REPO_SECRET}}
